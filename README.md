@@ -1,0 +1,1 @@
+# ngxs-entity-state
