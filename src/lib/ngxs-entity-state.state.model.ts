@@ -25,11 +25,11 @@ export class NgxsEntityStateStateModel<T> {
   public entities: { [id: string]: T };
   public selected: T | null;
 
-  static InitialState() {
-    return {
-      ids: [],
-      entities: {},
-      selected: null
-    };
+  static InitialState( defaultState: any = {}) {
+    return Object.assign( defaultState, {
+        ids: [],
+        entities: {},
+        selected: null
+    });
   }
 }
