@@ -26,9 +26,9 @@ export class NgxsEntityStateAdapter {
       object[item[keyField]] = item;
       return object;
     }, {});
-
     context.patchState( {
-      ...context.getState(), entities
+      ...context.getState(),
+      entities: entities
     });
   }
 
