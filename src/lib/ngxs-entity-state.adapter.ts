@@ -93,6 +93,10 @@ export class NgxsEntityStateAdapter {
   }
 
   static reset( context ) {
-    context.patchState({ entities: {} } );
+    context.patchState({
+      ids: [],
+      entities: {},
+      selected: null
+    });
   }
 }
