@@ -52,12 +52,12 @@ export class NgxsEntityStateAdapter {
       }
     });
   }
-  
+
   static upsertOne( entity: any, context, keyField = 'id' ) {
     if (entity[keyField]) {
      return NgxsEntityStateAdapter.updateOne( entity, context, keyField);
     }
-  
+
     return NgxsEntityStateAdapter.addOne( entity, context, keyField);
   }
 
