@@ -20,15 +20,17 @@
  SOFTWARE.
  */
 import { Observable, of } from 'rxjs';
+import { NgxsEntityStateAdapter } from './ngxs-entity-state.adapter';
 
 export class NgxsEntityStateCache {
-  
+
   static cache<T>( context, observable: Observable<T> ): Observable<T>  {
     const entities = context.getState().entities;
     if (Object.keys(entities).length > 0 ) {
+      NgxsEntityStateAdapter.stopLoading( context );
       return of<T>();
     }
-  
+
     return observable.pipe();
   }
 }
