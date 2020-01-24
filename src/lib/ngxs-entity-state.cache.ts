@@ -20,17 +20,17 @@
  SOFTWARE.
  */
 import { Observable, of } from 'rxjs';
-import { NgxsEntityStateAdapter } from './ngxs-entity-state.adapter';
+import { NgxsEntityStateSelector } from './ngxs-entity-state.selector';
 
 export class NgxsEntityStateCache {
 
-  static cache<T>( context, observable: Observable<T> ): Observable<T>  {
+  static cache<T>( context, observable:  Observable<T | any> ) {
     const entities = context.getState().entities;
+    const entitiesAsArray = NgxsEntityStateSelector.getEntities<T>( entities );
     if (Object.keys(entities).length > 0 ) {
-      NgxsEntityStateAdapter.stopLoading( context );
-      return of<T>();
+      return of(entitiesAsArray);
     }
 
-    return observable.pipe();
+    return observable;
   }
 }

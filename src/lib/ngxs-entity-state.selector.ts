@@ -19,7 +19,11 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-export class NgxsEntityStateSelector {
+export class NgxsEntityStateSelector<T> {
+  static getEntities<T>( entities ): Array<T> {
+    const ids =  Object.keys(entities);
+    return ids.map((id: any) => (entities as T)[id]);
+  }
   getEntities( entities ) {
     const ids =  Object.keys(entities);
     return ids.map((id: any) => (entities as any)[id]);
